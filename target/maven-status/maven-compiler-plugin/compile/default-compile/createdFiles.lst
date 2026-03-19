@@ -8,3 +8,4 @@ weather/WeatherAPI.class
 weather/WelcomePage.class
 JavaFX.class
 weather/ProbabilityOfPrecipitation.class
+weather/DailyWeatherPage.class

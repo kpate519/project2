@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import weather.DailyWeatherPage;
 import weather.Period;
 import weather.WeatherAPI;
 import weather.WelcomePage;
@@ -23,8 +24,8 @@ public class JavaFX extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Weather App"); //we can change the title later if we want to
 
-		WelcomePage welcomePage = new WelcomePage();
-		Scene scene = welcomePage.createScene(primaryStage);
+		DailyWeatherPage dailyWeatherPage = new DailyWeatherPage();
+		Scene scene = dailyWeatherPage.createScene(primaryStage);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
