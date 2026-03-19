@@ -1,6 +1,8 @@
 package weather;
 
 import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.geometry.Pos;
@@ -27,6 +29,9 @@ public class DailyWeatherPage {
         vbox3.setAlignment(Pos.CENTER);
         vbox3.setSpacing(5);
 
+        //temperature curve
+
+
         //city
         Label cityName = new Label("Chicago, Illinois");
         Font cityFont = Font.loadFont(getClass().getResourceAsStream("/fonts/Poppins-SemiBold.ttf"),25);
@@ -40,7 +45,7 @@ public class DailyWeatherPage {
         //temperature
         String tempText = current + "°";
         Label temperature = new Label(tempText);
-        Font tempFont = Font.loadFont(getClass().getResourceAsStream("/fonts/Poppins-SemiBold.ttf"),70);
+        Font tempFont = Font.loadFont(getClass().getResourceAsStream("/fonts/Poppins-SemiBold.ttf"),67);
         temperature.setFont(tempFont);
         temperature.setStyle("-fx-text-fill: black");
 
@@ -48,18 +53,27 @@ public class DailyWeatherPage {
         String imagePath = getWeatherPic(weather);
         Image image = new Image(getClass().getResourceAsStream(imagePath));
         ImageView imageView = new ImageView(image);
-        imageView.setFitWidth(120);
+        imageView.setFitWidth(110);
         imageView.setPreserveRatio(true);
 
         //short description
         Label shortDescription = new Label(weather);
-        Font shortDesFont = Font.loadFont(getClass().getResourceAsStream("/fonts/Poppins-SemiBold.ttf"),17);
+        Font shortDesFont = Font.loadFont(getClass().getResourceAsStream("/fonts/Poppins-SemiBold.ttf"),15);
         shortDescription.setFont(shortDesFont);
         shortDescription.setStyle("-fx-text-fill: black");
 
-        vbox2.getChildren().addAll(temperature, shortDescription);
+        //High/Low temp
+        int high = forecast.get(0).temperature;
+        int low = forecast.get(1).temperature;
+        String HL = "H: " + high + "°" + "    L: " + low + "°";
+        Label highLowTemp = new Label(HL);
+        Font HLFont = Font.loadFont(getClass().getResourceAsStream("/fonts/Poppins-SemiBold.ttf"),15);
+        highLowTemp.setFont(HLFont);
+        highLowTemp.setStyle("-fx-text-fill: black");
 
-        vbox.getChildren().addAll(cityName,imageView, vbox2);
+        vbox2.getChildren().addAll(temperature, shortDescription, highLowTemp);
+        vbox3.getChildren().addAll(imageView, vbox2);
+        vbox.getChildren().addAll(cityName,vbox3);
 
         vbox.setAlignment(Pos.TOP_CENTER);
 
