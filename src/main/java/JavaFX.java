@@ -24,8 +24,8 @@ public class JavaFX extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setTitle("Weather App"); //we can change the title later if we want to
 
-		DailyWeatherPage dailyWeatherPage = new DailyWeatherPage();
-		Scene scene = dailyWeatherPage.createScene(primaryStage);
+		WelcomePage welcomePage = new WelcomePage();
+		Scene scene = welcomePage.createScene(primaryStage);
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
